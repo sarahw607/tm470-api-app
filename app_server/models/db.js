@@ -1,6 +1,12 @@
 const mongoose = require('mongoose');
 
-const dbURI = 'mongodb://localhost/tm470';
+let dbURI = 'mongodb://localhost/tm470';
+console.log(process.env.NODE_ENV)
+console.log(process.env.MLAB_URI)
+if(process.env.NODE_ENV === 'production'){
+    dbURI = process.env.MLAB_URI;
+}
+
 require('./users');
 
 mongoose.connect(dbURI, {useNewUrlParser: true});
