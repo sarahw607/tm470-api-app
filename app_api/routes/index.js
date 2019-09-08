@@ -9,9 +9,7 @@ const ctrlUsers = require('../controllers/users');
 const ctrlIngredients = require('../controllers/ingredients');
 const ctrlAuth = require('../controllers/auth');
 
-// router.route('/users').post(ctrlUsers.createUser);
-
-router.route('/users/:userId').get(auth, ctrlUsers.getUser);
+// router.route('/users/:userId').get(auth, ctrlUsers.getUser);
 
 router.route('/users/ingredients').post(auth, ctrlIngredients.createIngredient).get(auth, ctrlIngredients.getIngredients);
 
@@ -20,4 +18,5 @@ router.route('/users/ingredients/:ingredientId').delete(auth, ctrlIngredients.de
 router.post('/register', ctrlAuth.register);
 
 router.post('/login', ctrlAuth.login);
+
 module.exports =  router 

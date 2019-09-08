@@ -2,6 +2,8 @@ const mongoose = require('mongoose');
 const user = mongoose.model('User');
 
 const getIngredients = (req, res) => {
+    console.log('hi');
+    console.log(req.payload);
     if (req.payload && req.payload._id) {
         user.findById(req.payload._id).select('ingredients').exec((err, ingredients) => {
             if (!ingredients) {
@@ -21,6 +23,7 @@ const getIngredients = (req, res) => {
 }
 
 const createIngredient = (req, res) => {
+    console.log(req.payload);
     if (req.payload && req.payload._id) {
         user
             .findById(req.payload._id)
@@ -37,14 +40,14 @@ const createIngredient = (req, res) => {
     } else {
         res
             .status(404)
-            .json({ "message": "User not found" });
+            .json({ "message": "User not found e" });
     }
 
 }
 
 const doAddIngredient = (req, res, user) => {
     if (!user) {
-        res.status(404).json({ "message": "user not found" })
+        res.status(404).json({ "message": "user not found d" })
     }
     else {
         user.ingredients.push({ name: req.body.name });
@@ -76,7 +79,7 @@ const deleteIngredient = (req, res) => {
             if (!user) {
                 return res
                     .status(404)
-                    .json({ 'message': 'User not found' });
+                    .json({ 'message': 'User not found c' });
             } else if (err) {
                 return res
                     .status(400)
@@ -111,7 +114,7 @@ const deleteIngredient = (req, res) => {
     } else {
         res
         .status(404)
-        .json({ "message": "User not found" });
+        .json({ "message": "User not found b" });
     }
 };
 
